@@ -15,7 +15,9 @@ def normalizeRows(x):
     """
 
     ### YOUR CODE HERE
-    raise NotImplementedError
+    x2 = np.multiply(x, x)
+    denominator = np.sqrt(np.sum(x2, axis=1, keepdims=True))
+    x = x/denominator
     ### END YOUR CODE
 
     return x
