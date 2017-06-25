@@ -1,4 +1,4 @@
-zhw@dcd404-ip20:~/cs224n$ CUDA_VISIBLE_DEVICES=0 python q2_parser_model.py 
+zhw@dcd404-ip20:~/cs224n$ python q2_parser_model.py 
 I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcublas.so.8.0 locally
 I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcudnn.so.5 locally
 I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcufft.so.8.0 locally
@@ -7,13 +7,13 @@ I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library
 ================================================================================
 INITIALIZING
 ================================================================================
-Loading data... took 2.85 seconds
-Building parser... took 1.67 seconds
-Loading pretrained embeddings... took 3.35 seconds
-Vectorizing data... took 2.37 seconds
+Loading data... took 2.77 seconds
+Building parser... took 1.68 seconds
+Loading pretrained embeddings... took 3.33 seconds
+Vectorizing data... took 2.36 seconds
 Preprocessing training data...
-39832/39832 [==============================] - 58s     
-Building model... took 0.22 seconds
+39832/39832 [==============================] - 57s     
+Building model... took 0.26 seconds
 
 I tensorflow/core/common_runtime/gpu/gpu_device.cc:885] Found device 0 with properties: 
 name: Tesla K40c
@@ -21,151 +21,73 @@ major: 3 minor: 5 memoryClockRate (GHz) 0.745
 pciBusID 0000:02:00.0
 Total memory: 11.17GiB
 Free memory: 11.10GiB
-I tensorflow/core/common_runtime/gpu/gpu_device.cc:906] DMA: 0 
-I tensorflow/core/common_runtime/gpu/gpu_device.cc:916] 0:   Y 
+W tensorflow/stream_executor/cuda/cuda_driver.cc:590] creating context when one is currently active; existing: 0x164d1480
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:885] Found device 1 with properties: 
+name: Tesla K40c
+major: 3 minor: 5 memoryClockRate (GHz) 0.745
+pciBusID 0000:84:00.0
+Total memory: 11.17GiB
+Free memory: 11.10GiB
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:777] Peer access not supported between device ordinals 0 and 1
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:777] Peer access not supported between device ordinals 1 and 0
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:906] DMA: 0 1 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:916] 0:   Y N 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:916] 1:   N Y 
 I tensorflow/core/common_runtime/gpu/gpu_device.cc:975] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K40c, pci bus id: 0000:02:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:975] Creating TensorFlow device (/gpu:1) -> (device: 1, name: Tesla K40c, pci bus id: 0000:84:00.0)
 ================================================================================
 TRAINING
 ================================================================================
-Epoch 1 out of 30
-924/924 [==============================] - 11s - train loss: 0.2050       
-Evaluating on dev set - dev UAS: 82.12
+Epoch 1 out of 10
+924/924 [==============================] - 15s - train loss: 0.1939       
+Evaluating on dev set - dev UAS: 83.88
 New best dev UAS! Saving model in ./data/weights/parser.weights
 
-Epoch 2 out of 30
-924/924 [==============================] - 10s - train loss: 0.1343       
-Evaluating on dev set - dev UAS: 83.92
+Epoch 2 out of 10
+924/924 [==============================] - 16s - train loss: 0.1157       
+Evaluating on dev set - dev UAS: 86.37
 New best dev UAS! Saving model in ./data/weights/parser.weights
 
-Epoch 3 out of 30
-924/924 [==============================] - 11s - train loss: 0.1225       
-Evaluating on dev set - dev UAS: 84.95
+Epoch 3 out of 10
+924/924 [==============================] - 15s - train loss: 0.1012       
+Evaluating on dev set - dev UAS: 87.06
 New best dev UAS! Saving model in ./data/weights/parser.weights
 
-Epoch 4 out of 30
-924/924 [==============================] - 10s - train loss: 0.1159       
-Evaluating on dev set - dev UAS: 85.43
-New best dev UAS! Saving model in ./data/weights/parser.weights
-
-Epoch 5 out of 30
-924/924 [==============================] - 10s - train loss: 0.1121       
-Evaluating on dev set - dev UAS: 85.99
-New best dev UAS! Saving model in ./data/weights/parser.weights
-
-Epoch 6 out of 30
-924/924 [==============================] - 11s - train loss: 0.1089       
-Evaluating on dev set - dev UAS: 86.17
-New best dev UAS! Saving model in ./data/weights/parser.weights
-
-Epoch 7 out of 30
-924/924 [==============================] - 10s - train loss: 0.1058       
-Evaluating on dev set - dev UAS: 86.19
-New best dev UAS! Saving model in ./data/weights/parser.weights
-
-Epoch 8 out of 30
-924/924 [==============================] - 10s - train loss: 0.1034       
-Evaluating on dev set - dev UAS: 86.55
-New best dev UAS! Saving model in ./data/weights/parser.weights
-
-Epoch 9 out of 30
-924/924 [==============================] - 11s - train loss: 0.1013       
-Evaluating on dev set - dev UAS: 86.88
-New best dev UAS! Saving model in ./data/weights/parser.weights
-
-Epoch 10 out of 30
-924/924 [==============================] - 11s - train loss: 0.0998       
-Evaluating on dev set - dev UAS: 87.07
-New best dev UAS! Saving model in ./data/weights/parser.weights
-
-Epoch 11 out of 30
-924/924 [==============================] - 10s - train loss: 0.0985       
-Evaluating on dev set - dev UAS: 86.84
-
-Epoch 12 out of 30
-924/924 [==============================] - 10s - train loss: 0.0970       
-Evaluating on dev set - dev UAS: 86.92
-
-Epoch 13 out of 30
-924/924 [==============================] - 11s - train loss: 0.0960       
-Evaluating on dev set - dev UAS: 87.07
-
-Epoch 14 out of 30
-924/924 [==============================] - 11s - train loss: 0.0947       
-Evaluating on dev set - dev UAS: 87.03
-
-Epoch 15 out of 30
-924/924 [==============================] - 10s - train loss: 0.0935       
-Evaluating on dev set - dev UAS: 87.20
-New best dev UAS! Saving model in ./data/weights/parser.weights
-
-Epoch 16 out of 30
-924/924 [==============================] - 11s - train loss: 0.0928       
-Evaluating on dev set - dev UAS: 87.16
-
-Epoch 17 out of 30
-924/924 [==============================] - 11s - train loss: 0.0919       
+Epoch 4 out of 10
+924/924 [==============================] - 15s - train loss: 0.0918       
 Evaluating on dev set - dev UAS: 87.60
 New best dev UAS! Saving model in ./data/weights/parser.weights
 
-Epoch 18 out of 30
-924/924 [==============================] - 11s - train loss: 0.0910       
-Evaluating on dev set - dev UAS: 87.25
-
-Epoch 19 out of 30
-924/924 [==============================] - 11s - train loss: 0.0903       
-Evaluating on dev set - dev UAS: 87.54
-
-Epoch 20 out of 30
-924/924 [==============================] - 11s - train loss: 0.0893       
-Evaluating on dev set - dev UAS: 87.37
-
-Epoch 21 out of 30
-924/924 [==============================] - 11s - train loss: 0.0888       
-Evaluating on dev set - dev UAS: 87.54
-
-Epoch 22 out of 30
-924/924 [==============================] - 10s - train loss: 0.0883       
-Evaluating on dev set - dev UAS: 87.36
-
-Epoch 23 out of 30
-924/924 [==============================] - 11s - train loss: 0.0877       
-Evaluating on dev set - dev UAS: 87.56
-
-Epoch 24 out of 30
-924/924 [==============================] - 11s - train loss: 0.0869       
-Evaluating on dev set - dev UAS: 87.68
+Epoch 5 out of 10
+924/924 [==============================] - 14s - train loss: 0.0845       
+Evaluating on dev set - dev UAS: 88.09
 New best dev UAS! Saving model in ./data/weights/parser.weights
 
-Epoch 25 out of 30
-924/924 [==============================] - 11s - train loss: 0.0865       
-Evaluating on dev set - dev UAS: 87.61
-
-Epoch 26 out of 30
-924/924 [==============================] - 11s - train loss: 0.0861       
-Evaluating on dev set - dev UAS: 87.48
-
-Epoch 27 out of 30
-924/924 [==============================] - 11s - train loss: 0.0856       
-Evaluating on dev set - dev UAS: 87.50
-
-Epoch 28 out of 30
-924/924 [==============================] - 11s - train loss: 0.0850       
-Evaluating on dev set - dev UAS: 87.52
-
-Epoch 29 out of 30
-924/924 [==============================] - 11s - train loss: 0.0846       
-Evaluating on dev set - dev UAS: 87.82
+Epoch 6 out of 10
+924/924 [==============================] - 15s - train loss: 0.0795       
+Evaluating on dev set - dev UAS: 88.52
 New best dev UAS! Saving model in ./data/weights/parser.weights
 
-Epoch 30 out of 30
-924/924 [==============================] - 10s - train loss: 0.0840       
-Evaluating on dev set - dev UAS: 87.98
-New best dev UAS! Saving model in ./data/weights/parser.weights
+Epoch 7 out of 10
+924/924 [==============================] - 15s - train loss: 0.0751       
+Evaluating on dev set - dev UAS: 88.16
+
+Epoch 8 out of 10
+924/924 [==============================] - 14s - train loss: 0.0706       
+Evaluating on dev set - dev UAS: 88.33
+
+Epoch 9 out of 10
+924/924 [==============================] - 14s - train loss: 0.0670       
+Evaluating on dev set - dev UAS: 88.38
+
+Epoch 10 out of 10
+924/924 [==============================] - 14s - train loss: 0.0635       
+Evaluating on dev set - dev UAS: 88.35
 
 ================================================================================
 TESTING
 ================================================================================
 Restoring the best model weights found on the dev set
-Final evaluation on test set - test UAS: 88.43
+Final evaluation on test set - test UAS: 88.62
 Writing predictions
 Done!
