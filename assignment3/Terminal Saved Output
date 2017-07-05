@@ -1,0 +1,317 @@
+zhw@dcd404-ip20:~/assignment3$ python q2_rnn.py train -c gru
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcublas.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcudnn.so.5 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcufft.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcuda.so.1 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcurand.so.8.0 locally
+INFO:Loading training data...
+INFO:Done. Read 14041 sentences
+INFO:Loading dev data...
+INFO:Done. Read 3250 sentences
+INFO:Built dictionary for 10007 features.
+INFO:Initialized embeddings.
+INFO:Building model...
+/usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/gradients_impl.py:91: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+INFO:took 20.55 seconds
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:885] Found device 0 with properties: 
+name: Tesla K40c
+major: 3 minor: 5 memoryClockRate (GHz) 0.745
+pciBusID 0000:02:00.0
+Total memory: 11.17GiB
+Free memory: 11.10GiB
+W tensorflow/stream_executor/cuda/cuda_driver.cc:590] creating context when one is currently active; existing: 0xcf4f870
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:885] Found device 1 with properties: 
+name: Tesla K40c
+major: 3 minor: 5 memoryClockRate (GHz) 0.745
+pciBusID 0000:84:00.0
+Total memory: 11.17GiB
+Free memory: 11.10GiB
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:777] Peer access not supported between device ordinals 0 and 1
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:777] Peer access not supported between device ordinals 1 and 0
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:906] DMA: 0 1 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:916] 0:   Y N 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:916] 1:   N Y 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:975] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K40c, pci bus id: 0000:02:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:975] Creating TensorFlow device (/gpu:1) -> (device: 1, name: Tesla K40c, pci bus id: 0000:84:00.0)
+INFO:Epoch 1 out of 10
+I tensorflow/core/common_runtime/gpu/pool_allocator.cc:247] PoolAllocator: After 2954 get requests, put_count=1103 evicted_count=1000 eviction_rate=0.906618 and unsatisfied allocation rate=0.998984
+I tensorflow/core/common_runtime/gpu/pool_allocator.cc:259] Raising pool_size_limit_ from 100 to 110
+  3/439 [..............................] - ETA: 583s - train loss: 0.9200I tensorflow/core/common_runtime/gpu/pool_allocator.cc:247] PoolAllocator: After 0 get requests, put_count=2013 evicted_count=2000 eviction_rate=0.993542 and unsatisfied allocation rate=0
+  7/439 [..............................] - ETA: 289s - train loss: 0.7568I tensorflow/core/common_runtime/gpu/pool_allocator.cc:247] PoolAllocator: After 0 get requests, put_count=1019 evicted_count=1000 eviction_rate=0.981354 and unsatisfied allocation rate=0
+ 11/439 [..............................] - ETA: 209s - train loss: 0.6357I tensorflow/core/common_runtime/gpu/pool_allocator.cc:247] PoolAllocator: After 2954 get requests, put_count=3309 evicted_count=3000 eviction_rate=0.906618 and unsatisfied allocation rate=0.903859
+I tensorflow/core/common_runtime/gpu/pool_allocator.cc:259] Raising pool_size_limit_ from 281 to 309
+ 15/439 [>.............................] - ETA: 171s - train loss: 0.5690I tensorflow/core/common_runtime/gpu/pool_allocator.cc:247] PoolAllocator: After 2954 get requests, put_count=2449 evicted_count=2000 eviction_rate=0.81666 and unsatisfied allocation rate=0.860528
+I tensorflow/core/common_runtime/gpu/pool_allocator.cc:259] Raising pool_size_limit_ from 409 to 449
+ 19/439 [>.............................] - ETA: 149s - train loss: 0.5273I tensorflow/core/common_runtime/gpu/pool_allocator.cc:247] PoolAllocator: After 2954 get requests, put_count=2653 evicted_count=2000 eviction_rate=0.753864 and unsatisfied allocation rate=0.797224
+I tensorflow/core/common_runtime/gpu/pool_allocator.cc:259] Raising pool_size_limit_ from 596 to 655
+ 23/439 [>.............................] - ETA: 134s - train loss: 0.4917I tensorflow/core/common_runtime/gpu/pool_allocator.cc:247] PoolAllocator: After 0 get requests, put_count=1087 evicted_count=1000 eviction_rate=0.919963 and unsatisfied allocation rate=0
+ 30/439 [=>............................] - ETA: 118s - train loss: 0.4550I tensorflow/core/common_runtime/gpu/pool_allocator.cc:247] PoolAllocator: After 2954 get requests, put_count=2851 evicted_count=1000 eviction_rate=0.350754 and unsatisfied allocation rate=0.425525
+I tensorflow/core/common_runtime/gpu/pool_allocator.cc:259] Raising pool_size_limit_ from 1694 to 1863
+439/439 [==============================] - 79s - train loss: 0.1933      
+
+INFO:Evaluating on development data
+102/102 [==============================] - 132s     
+DEBUG:Token-level confusion matrix:
+go\gu   	PER     	ORG     	LOC     	MISC    	O       
+PER     	2792.00 	45.00   	82.00   	47.00   	183.00  
+ORG     	242.00  	1123.00 	232.00  	246.00  	249.00  
+LOC     	74.00   	44.00   	1781.00 	98.00   	97.00   
+MISC    	52.00   	50.00   	79.00   	959.00  	128.00  
+O       	47.00   	53.00   	34.00   	77.00   	42548.00
+
+DEBUG:Token-level scores:
+label	acc  	prec 	rec  	f1   
+PER  	0.98 	0.87 	0.89 	0.88 
+ORG  	0.98 	0.85 	0.54 	0.66 
+LOC  	0.99 	0.81 	0.85 	0.83 
+MISC 	0.98 	0.67 	0.76 	0.71 
+O    	0.98 	0.98 	1.00 	0.99 
+micro	0.98 	0.96 	0.96 	0.96 
+macro	0.98 	0.84 	0.81 	0.81 
+not-O	0.98 	0.82 	0.77 	0.79 
+
+INFO:Entity level P/R/F1: 0.73/0.74/0.73
+INFO:New best score! Saving model in results/gru/20170703_134011/model.weights
+
+INFO:Epoch 2 out of 10
+439/439 [==============================] - 77s - train loss: 0.1087      
+
+INFO:Evaluating on development data
+102/102 [==============================] - 130s     
+DEBUG:Token-level confusion matrix:
+go\gu   	PER     	ORG     	LOC     	MISC    	O       
+PER     	2951.00 	69.00   	44.00   	23.00   	62.00   
+ORG     	188.00  	1520.00 	111.00  	154.00  	119.00  
+LOC     	66.00   	114.00  	1803.00 	68.00   	43.00   
+MISC    	50.00   	50.00   	45.00   	1021.00 	102.00  
+O       	67.00   	69.00   	17.00   	86.00   	42520.00
+
+DEBUG:Token-level scores:
+label	acc  	prec 	rec  	f1   
+PER  	0.99 	0.89 	0.94 	0.91 
+ORG  	0.98 	0.83 	0.73 	0.78 
+LOC  	0.99 	0.89 	0.86 	0.88 
+MISC 	0.99 	0.76 	0.81 	0.78 
+O    	0.99 	0.99 	0.99 	0.99 
+micro	0.99 	0.97 	0.97 	0.97 
+macro	0.99 	0.87 	0.86 	0.87 
+not-O	0.99 	0.86 	0.85 	0.85 
+
+INFO:Entity level P/R/F1: 0.79/0.82/0.81
+INFO:New best score! Saving model in results/gru/20170703_134011/model.weights
+
+INFO:Epoch 3 out of 10
+439/439 [==============================] - 76s - train loss: 0.0749      
+
+INFO:Evaluating on development data
+102/102 [==============================] - 129s     
+DEBUG:Token-level confusion matrix:
+go\gu   	PER     	ORG     	LOC     	MISC    	O       
+PER     	2825.00 	210.00  	38.00   	21.00   	55.00   
+ORG     	106.00  	1746.00 	68.00   	69.00   	103.00  
+LOC     	29.00   	192.00  	1801.00 	35.00   	37.00   
+MISC    	26.00   	93.00   	43.00   	998.00  	108.00  
+O       	45.00   	84.00   	9.00    	46.00   	42575.00
+
+DEBUG:Token-level scores:
+label	acc  	prec 	rec  	f1   
+PER  	0.99 	0.93 	0.90 	0.91 
+ORG  	0.98 	0.75 	0.83 	0.79 
+LOC  	0.99 	0.92 	0.86 	0.89 
+MISC 	0.99 	0.85 	0.79 	0.82 
+O    	0.99 	0.99 	1.00 	0.99 
+micro	0.99 	0.97 	0.97 	0.97 
+macro	0.99 	0.89 	0.87 	0.88 
+not-O	0.99 	0.87 	0.86 	0.86 
+
+INFO:Entity level P/R/F1: 0.80/0.83/0.82
+INFO:New best score! Saving model in results/gru/20170703_134011/model.weights
+
+INFO:Epoch 4 out of 10
+439/439 [==============================] - 76s - train loss: 0.0544      
+
+INFO:Evaluating on development data
+102/102 [==============================] - 130s     
+DEBUG:Token-level confusion matrix:
+go\gu   	PER     	ORG     	LOC     	MISC    	O       
+PER     	2922.00 	109.00  	38.00   	4.00    	76.00   
+ORG     	124.00  	1731.00 	90.00   	44.00   	103.00  
+LOC     	27.00   	119.00  	1890.00 	19.00   	39.00   
+MISC    	50.00   	114.00  	48.00   	955.00  	101.00  
+O       	38.00   	80.00   	13.00   	27.00   	42601.00
+
+DEBUG:Token-level scores:
+label	acc  	prec 	rec  	f1   
+PER  	0.99 	0.92 	0.93 	0.93 
+ORG  	0.98 	0.80 	0.83 	0.82 
+LOC  	0.99 	0.91 	0.90 	0.91 
+MISC 	0.99 	0.91 	0.75 	0.82 
+O    	0.99 	0.99 	1.00 	0.99 
+micro	0.99 	0.98 	0.98 	0.98 
+macro	0.99 	0.91 	0.88 	0.89 
+not-O	0.99 	0.89 	0.87 	0.88 
+
+INFO:Entity level P/R/F1: 0.83/0.85/0.84
+INFO:New best score! Saving model in results/gru/20170703_134011/model.weights
+
+INFO:Epoch 5 out of 10
+439/439 [==============================] - 76s - train loss: 0.0404      
+
+INFO:Evaluating on development data
+102/102 [==============================] - 134s     
+DEBUG:Token-level confusion matrix:
+go\gu   	PER     	ORG     	LOC     	MISC    	O       
+PER     	3002.00 	16.00   	40.00   	19.00   	72.00   
+ORG     	179.00  	1572.00 	118.00  	100.00  	123.00  
+LOC     	44.00   	51.00   	1929.00 	29.00   	41.00   
+MISC    	51.00   	33.00   	54.00   	1037.00 	93.00   
+O       	44.00   	37.00   	15.00   	48.00   	42615.00
+
+DEBUG:Token-level scores:
+label	acc  	prec 	rec  	f1   
+PER  	0.99 	0.90 	0.95 	0.93 
+ORG  	0.99 	0.92 	0.75 	0.83 
+LOC  	0.99 	0.89 	0.92 	0.91 
+MISC 	0.99 	0.84 	0.82 	0.83 
+O    	0.99 	0.99 	1.00 	0.99 
+micro	0.99 	0.98 	0.98 	0.98 
+macro	0.99 	0.91 	0.89 	0.90 
+not-O	0.99 	0.90 	0.88 	0.89 
+
+INFO:Entity level P/R/F1: 0.84/0.86/0.85
+INFO:New best score! Saving model in results/gru/20170703_134011/model.weights
+
+INFO:Epoch 6 out of 10
+439/439 [==============================] - 76s - train loss: 0.0303      
+
+INFO:Evaluating on development data
+102/102 [==============================] - 131s     
+DEBUG:Token-level confusion matrix:
+go\gu   	PER     	ORG     	LOC     	MISC    	O       
+PER     	2922.00 	76.00   	49.00   	34.00   	68.00   
+ORG     	94.00   	1702.00 	80.00   	110.00  	106.00  
+LOC     	29.00   	77.00   	1902.00 	49.00   	37.00   
+MISC    	34.00   	48.00   	40.00   	1056.00 	90.00   
+O       	28.00   	68.00   	14.00   	55.00   	42594.00
+
+DEBUG:Token-level scores:
+label	acc  	prec 	rec  	f1   
+PER  	0.99 	0.94 	0.93 	0.93 
+ORG  	0.99 	0.86 	0.81 	0.84 
+LOC  	0.99 	0.91 	0.91 	0.91 
+MISC 	0.99 	0.81 	0.83 	0.82 
+O    	0.99 	0.99 	1.00 	0.99 
+micro	0.99 	0.98 	0.98 	0.98 
+macro	0.99 	0.90 	0.90 	0.90 
+not-O	0.99 	0.90 	0.88 	0.89 
+
+INFO:Entity level P/R/F1: 0.85/0.86/0.85
+INFO:New best score! Saving model in results/gru/20170703_134011/model.weights
+
+INFO:Epoch 7 out of 10
+439/439 [==============================] - 76s - train loss: 0.0244      
+
+INFO:Evaluating on development data
+102/102 [==============================] - 133s     
+DEBUG:Token-level confusion matrix:
+go\gu   	PER     	ORG     	LOC     	MISC    	O       
+PER     	2799.00 	160.00  	68.00   	21.00   	101.00  
+ORG     	60.00   	1818.00 	66.00   	53.00   	95.00   
+LOC     	17.00   	119.00  	1893.00 	23.00   	42.00   
+MISC    	20.00   	93.00   	48.00   	1016.00 	91.00   
+O       	17.00   	100.00  	20.00   	38.00   	42584.00
+
+DEBUG:Token-level scores:
+label	acc  	prec 	rec  	f1   
+PER  	0.99 	0.96 	0.89 	0.92 
+ORG  	0.99 	0.79 	0.87 	0.83 
+LOC  	0.99 	0.90 	0.90 	0.90 
+MISC 	0.99 	0.88 	0.80 	0.84 
+O    	0.99 	0.99 	1.00 	0.99 
+micro	0.99 	0.98 	0.98 	0.98 
+macro	0.99 	0.91 	0.89 	0.90 
+not-O	0.99 	0.89 	0.87 	0.88 
+
+INFO:Entity level P/R/F1: 0.84/0.85/0.84
+
+INFO:Epoch 8 out of 10
+439/439 [==============================] - 76s - train loss: 0.0188      
+
+INFO:Evaluating on development data
+102/102 [==============================] - 132s     
+DEBUG:Token-level confusion matrix:
+go\gu   	PER     	ORG     	LOC     	MISC    	O       
+PER     	2994.00 	38.00   	36.00   	12.00   	69.00   
+ORG     	127.00  	1710.00 	81.00   	76.00   	98.00   
+LOC     	50.00   	73.00   	1901.00 	34.00   	36.00   
+MISC    	36.00   	50.00   	38.00   	1055.00 	89.00   
+O       	33.00   	58.00   	11.00   	41.00   	42616.00
+
+DEBUG:Token-level scores:
+label	acc  	prec 	rec  	f1   
+PER  	0.99 	0.92 	0.95 	0.94 
+ORG  	0.99 	0.89 	0.82 	0.85 
+LOC  	0.99 	0.92 	0.91 	0.91 
+MISC 	0.99 	0.87 	0.83 	0.85 
+O    	0.99 	0.99 	1.00 	0.99 
+micro	0.99 	0.98 	0.98 	0.98 
+macro	0.99 	0.92 	0.90 	0.91 
+not-O	0.99 	0.91 	0.89 	0.90 
+
+INFO:Entity level P/R/F1: 0.86/0.87/0.86
+INFO:New best score! Saving model in results/gru/20170703_134011/model.weights
+
+INFO:Epoch 9 out of 10
+439/439 [==============================] - 76s - train loss: 0.0162      
+
+INFO:Evaluating on development data
+102/102 [==============================] - 133s     
+DEBUG:Token-level confusion matrix:
+go\gu   	PER     	ORG     	LOC     	MISC    	O       
+PER     	2946.00 	72.00   	68.00   	15.00   	48.00   
+ORG     	93.00   	1767.00 	76.00   	91.00   	65.00   
+LOC     	33.00   	87.00   	1926.00 	27.00   	21.00   
+MISC    	30.00   	69.00   	52.00   	1046.00 	71.00   
+O       	42.00   	99.00   	36.00   	61.00   	42521.00
+
+DEBUG:Token-level scores:
+label	acc  	prec 	rec  	f1   
+PER  	0.99 	0.94 	0.94 	0.94 
+ORG  	0.99 	0.84 	0.84 	0.84 
+LOC  	0.99 	0.89 	0.92 	0.91 
+MISC 	0.99 	0.84 	0.82 	0.83 
+O    	0.99 	1.00 	0.99 	0.99 
+micro	0.99 	0.98 	0.98 	0.98 
+macro	0.99 	0.90 	0.90 	0.90 
+not-O	0.99 	0.89 	0.89 	0.89 
+
+INFO:Entity level P/R/F1: 0.84/0.87/0.85
+
+INFO:Epoch 10 out of 10
+439/439 [==============================] - 76s - train loss: 0.0132      
+
+INFO:Evaluating on development data
+102/102 [==============================] - 133s     
+DEBUG:Token-level confusion matrix:
+go\gu   	PER     	ORG     	LOC     	MISC    	O       
+PER     	2892.00 	72.00   	90.00   	24.00   	71.00   
+ORG     	87.00   	1720.00 	102.00  	88.00   	95.00   
+LOC     	23.00   	73.00   	1942.00 	25.00   	31.00   
+MISC    	19.00   	47.00   	48.00   	1069.00 	85.00   
+O       	30.00   	60.00   	19.00   	52.00   	42598.00
+
+DEBUG:Token-level scores:
+label	acc  	prec 	rec  	f1   
+PER  	0.99 	0.95 	0.92 	0.93 
+ORG  	0.99 	0.87 	0.82 	0.85 
+LOC  	0.99 	0.88 	0.93 	0.90 
+MISC 	0.99 	0.85 	0.84 	0.85 
+O    	0.99 	0.99 	1.00 	0.99 
+micro	0.99 	0.98 	0.98 	0.98 
+macro	0.99 	0.91 	0.90 	0.90 
+not-O	0.99 	0.90 	0.89 	0.89 
+
+INFO:Entity level P/R/F1: 0.85/0.86/0.86
+
+102/102 [==============================] - 134s  

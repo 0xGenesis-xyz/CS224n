@@ -18,7 +18,7 @@ logger = logging.getLogger("hw3.q3.1")
 logger.setLevel(logging.DEBUG)
 logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
-class GRUCell(tf.nn.rnn_cell.RNNCell):
+class GRUCell(tf.contrib.rnn.RNNCell):
     """Wrapper around our GRU cell implementation that allows us to play
     nicely with TensorFlow.
     """
@@ -65,7 +65,21 @@ class GRUCell(tf.nn.rnn_cell.RNNCell):
         # be defined elsewhere!
         with tf.variable_scope(scope):
             ### YOUR CODE HERE (~20-30 lines)
-            pass
+            init = tf.contrib.layers.xavier_initializer()
+            Wr = tf.get_variable("W_r", shape=(self.state_size, self.state_size), initializer=init)
+            Ur = tf.get_variable("U_r", shape=(self.input_size, self.state_size), initializer=init)
+            br = tf.get_variable("b_r", shape=(self.state_size,), initializer=tf.zeros_initializer())
+            Wz = tf.get_variable("W_z", shape=(self.state_size, self.state_size), initializer=init)
+            Uz = tf.get_variable("U_z", shape=(self.input_size, self.state_size), initializer=init)
+            bz = tf.get_variable("b_z", shape=(self.state_size,), initializer=tf.zeros_initializer())
+            Wo = tf.get_variable("W_o", shape=(self.state_size, self.state_size), initializer=init)
+            Uo = tf.get_variable("U_o", shape=(self.input_size, self.state_size), initializer=init)
+            bo = tf.get_variable("b_o", shape=(self.state_size,), initializer=tf.zeros_initializer())
+
+            z = tf.sigmoid(tf.matmul(inputs, Uz) + tf.matmul(state, Wz) + bz)
+            r = tf.sigmoid(tf.matmul(inputs, Ur) + tf.matmul(state, Wr) + br)
+            o = tf.tanh(tf.matmul(inputs, Uo) + r*tf.matmul(state, Wo) + bo)
+            new_state = z*state + (1-z)*o
             ### END YOUR CODE ###
         # For a GRU, the output and state are the same (N.B. this isn't true
         # for an LSTM, though we aren't using one of those in our
